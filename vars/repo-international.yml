@@ -1,0 +1,11 @@
+---
+# yum variables can be checked using this command:
+#   $ python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'
+
+# pgdg_repoinstaller_url:     "https://download.postgresql.org/pub/repos/yum/{{ pgdg_version }}/redhat/rhel-{{ ansible_distribution_major_version }}-x86_64/pgdg-centos{{ pgdg_version|replace(old='.', new='') }}-{{ pgdg_version }}-{{ pgdg_release }}.noarch.rpm"
+pgdg_gpgkey_url:            "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-{{ pgdg_version|replace(old='.', new='') }}"
+pgdg_repo:
+  "pgdg{{ pgdg_version|replace(old='.', new='') }}":
+    file: "pgdg-{{ pgdg_version|replace(old='.', new='') }}-centos"
+    enabled: "{{ pgdg_enabled }}"
+    baseurl: "https://download.postgresql.org/pub/repos/yum/{{ pgdg_version }}/redhat/rhel-$releasever-$basearch"

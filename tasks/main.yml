@@ -1,2 +1,27 @@
 ---
-# tasks file for adipriyantobpn.repo-pgdg-94
+# tasks file for adipriyantobpn.repo-pgdg
+- block:
+
+  - name: include yum repository variable file
+    include_vars: "repo-{{ repo_location }}.yml"
+
+  - name: import PostgreSQL PGDG {{ pgdg_version }} GPG key
+    rpm_key:
+      key: "{{ pgdg_gpgkey_url.replace('file://', '') }}"
+      state: present
+    ignore_errors: "{{ ansible_check_mode }}"
+
+  - name: configure PostgreSQL PGDG {{ pgdg_version }} yum repository
+    yum_repository:
+      name: "{{ item.key.lower() }}"
+      description: "PostgreSQL {{ pgdg_version }} $releasever - $basearch"
+      mirrorlist: "{{ item.value.mirrorlist | default(omit) }}"
+      failovermethod: priority
+      baseurl: "{{ item.value.baseurl | default(omit) }}"
+      gpgkey: "{{ pgdg_gpgkey_url }}"
+      gpgcheck: yes
+      enabled: "{{ item.value.enabled }}"
+      file: "{{ item.value.file }}"
+      state: present
+    with_dict: "{{ pgdg_repo }}"
+  become: True

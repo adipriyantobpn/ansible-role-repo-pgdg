@@ -1,2 +1,19 @@
 ---
-# defaults file for adipriyantobpn.repo-pgdg-94
+# defaults file for adipriyantobpn.repo-pgdg
+
+repo_location:              international   # available options: international, vagrant
+pgdg_enabled:               yes
+pgdg_version:               9.4
+
+# NOTE:
+# maybe in the future we can use this to install Yum repository installer by using its release version
+# e.g. :
+#   - https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-2.noarch.rpm
+#   - https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm
+#   - https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-2.noarch.rpm
+#   - https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-3.noarch.rpm
+#   - https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+#                                                                                              ^ this number refer to {{ pgdg_release }}
+# for now it is not necessary
+#
+# pgdg_release:               3
