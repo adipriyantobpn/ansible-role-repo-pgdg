@@ -2,10 +2,10 @@
 # yum variables can be checked using this command:
 #   $ python -c 'import yum, pprint; yb = yum.YumBase(); pprint.pprint(yb.conf.yumvar, width=1)'
 
-# pgdg_repoinstaller_url: "file:///vagrant/repofile/pgdg-centos{{ pgdg_version|replace(old='.', new='') }}-{{ pgdg_version }}-{{ pgdg_release }}.noarch.rpm"
-pgdg_gpgkey_url:        "file:///vagrant/repofile/RPM-GPG-KEY-PGDG-{{ pgdg_version|replace(old='.', new='') }}"
+# pgdg_repoinstaller_url: "{{ vagrant_repo_base_dir }}pgdg-centos{{ pgdg_version|replace(old='.', new='') }}-{{ pgdg_version }}-{{ pgdg_release }}.noarch.rpm"
+pgdg_gpgkey_url:        "{{ vagrant_repo_base_dir }}RPM-GPG-KEY-PGDG-{{ pgdg_version|replace(old='.', new='') }}"
 pgdg_repo:
   "pgdg{{ pgdg_version|replace(old='.', new='') }}":
     file: "pgdg-{{ pgdg_version|replace(old='.', new='') }}-centos"
     enabled: "{{ pgdg_enabled }}"
-    baseurl: "file:///vagrant/repo/pgdg{{ pgdg_version|replace(old='.', new='') }}/"
+    baseurl: "{{ vagrant_repo_base_dir }}pgdg{{ pgdg_version|replace(old='.', new='') }}/"

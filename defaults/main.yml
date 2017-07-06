@@ -2,6 +2,7 @@
 # defaults file for adipriyantobpn.repo-pgdg
 
 repo_location:              international   # available options: international, vagrant
+vagrant_repo_base_dir:      "file:///vagrantshare/repo/"
 pgdg_enabled:               yes
 pgdg_version:               9.4
 
